@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="kz">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Анкеты Водителей</title>
+    <link rel="icon" href="Img/Logotips.png" type="image/x-icon">
+    <link rel="stylesheet" href="CSS/Questionnaire.css" id="main-stylesheet"></head>
+<body>
+    <header>
+        <div class="logo-">
+            <img class="logos" src="Img/Logotips.png" alt="Логотип" />
+            <h2 class="log">Перевозки 15</h2>
+            </div>
+        <div id="date-container">
+            <div id="day-of-week"></div>
+            <div id="date"></div>
+            <div id="year"></div>
+        </div>
+        <div class="contact-button" id="contactButton">
+            <i class='bx bxs-phone-call icon'></i>
+            <span class="phone-numbers">+7 (705) 990-50-57</span>
+        </div>
+        <a href="https://www.instagram.com/uvezu_privezu?igsh=cjdlcmVxN2R0NjE%3D" target="_blank" class="instagram-link">
+            <div class="contact-button instagram-button">
+                <i class='bx bxl-instagram instagram-icon'></i>
+            </div>
+        </a>
+        <div class="line"></div>
+        <nav class="navbar">
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="Home.html">Главная</a></li>
+                <li class="nav-item"><a href="Route_RK.html">Маршруты</a></li>
+                <li class="nav-item"><a href="">Анкета</a></li>
+                <li class="nav-item"><a href="Contacts.html">Контакты</a></li>
+            </ul>
+        </nav>
+        <div id="tooltip" style="display:none; position:absolute; background-color:white; border:1px solid #ccc; padding:3px; z-index:1000; font-size: 14px;"></div>
+    </header>
+    <main>
+        <div class="name_driver" style="margin-top: 130px;">
+            <div class="sillka" style="font-size: 15px; margin-top: 150px; margin-left: 120px;">
+                <a href="Home.html" class="__">Главная</a><span>/</span><span style="color: darksalmon; margin-left: 8px;">Анкета</span>
+            </div>
+            <h1 class="h1_">Анкеты водителей</h2>
+        </div>
+        <div class="text-info">
+            <p>Добро пожаловать на страницу Анкет водителей! Мы стремимся обеспечить максимально удобный и безопасный сервис для наших пользователей, и одним из ключевых компонентов этого процесса являются анкеты водителей.
+                Анкета водителя - это важный инструмент, который позволяет нам собирать информацию о каждом водителе, работающем в нашей команде. Заполняя анкету, водитель предоставляет данные о своем опыте, квалификациях и характеристиках автомобиля. Эти сведения помогают нам лучше оценить уровень обслуживания и гарантировать безопасность пассажиров.</p>
+            <p>Мы понимаем, насколько важна для вас прозрачность и доверие. Поэтому каждая анкета проходит тщательную проверку, и все автотранспортные средства, используемые для перевозки, обязаны соответствовать высоким стандартам качества и безопасности. Мы внимательно относимся к выбору водителей, чтобы вы могли быть уверены в своей поездке.
+                Надеемся, что выбор нашего сервиса принесет вам только положительные эмоции и сделает ваши поездки безопасными и приятными!</p>
+        </div>
+        <div class="drivers-container">
+            <div class="driver">
+                <div class="photo">
+                    <img src="driver1.jpg" alt="Водитель 1">
+                </div>
+                <div class="info">
+                    <div class="name">Сорокин Евгений Николаевич</div>
+                    <div class="age">Возраст: <span class="age_">38 лет</span></div>
+                    <div class="rating">Рейтинг: ★★★★★</div>
+                    <div class="car-info">
+                        <span>Машина: Kia Rio 3</span>
+                    </div>
+                    <div class="car-info">
+                        <span>Стаж: 20 лет</span>
+                    </div>
+                </div>
+                <div class="whatsapp-container">
+                    <div class="whatsapp-icon" onclick="window.open('https://wa.me/77778972644', '_blank')">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+                    </div>
+                    <div class="phone-number" onclick="handlePhoneClick('+77778972644', this)">+7 777 897-26-44</div>
+                <div class="copy-notification" id="copy-notification" style="width: 205px; font-size: 13.5px;">Номер телефона скопирован <span>✅</span></div>
+                </div>
+                <div class="whatsapp-container-mobile">
+                    <div class="whatsapp-icon" onclick="window.open('https://wa.me/77778972644', '_blank')">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+                    </div>
+                    <div class="phone-number-mobile" onclick="handlePhoneClick('+77778972644', this)">+7 777 897-26-44</div>
+                <div class="copy-notification" id="copy-notification" style="width: 205px; font-size: 13.5px;">Номер телефона скопирован <span>✅</span></div>
+                </div>
+                <div class="vertical-line"></div>
+                <div class="car-details">
+                    <div class="car-title">Kia Rio 3</div>
+                    <div class="car-image">
+                        <img src="Img/Kia-3_2.png" alt="Kia Rio 3" data-large="Img/Kia-Rio 2013.png">
+                    </div>
+                </div>
+            </div>
+            <div class="driver" style="margin-top: 13px;">
+                <div class="photo">
+                    <img src="driver2.jpg" alt="Водитель 2">
+                </div>
+                <div class="info">
+                    <div class="name">Крец Павел Геннадьевич</div>
+                    <div class="age">Возраст: <span class="age_">26 лет</span></div>
+                    <div class="rating">Рейтинг: ★★★☆☆</div>
+                    <div class="car-info">
+                        <span>Машина: Kia Rio 4</span>
+                    </div>
+                    <div class="car-info">
+                        <span>Стаж: 9 лет</span>
+                    </div>
+                </div>
+                <div class="whatsapp-container">
+                    <div class="whatsapp-icon" onclick="window.open('https://wa.me/77479085568', '_blank')">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+                    </div>
+                    <div class="phone-number" onclick="handlePhoneClick('+77479085568', this)">+7 747 908-55-68</div>
+                <div class="copy-notification" id="copy-notification" style="width: 205px; font-size: 13.5px;">Номер телефона скопирован <span>✅</span></div>
+                </div>
+                <div class="whatsapp-container-mobile">
+                    <div class="whatsapp-icon" onclick="window.open('https://wa.me/77479085568', '_blank')">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+                    </div>
+                    <div class="phone-number-mobile" onclick="handlePhoneClick('+77479085568', this)">+7 747 908-55-68</div>
+                <div class="copy-notification" id="copy-notification" style="width: 205px; font-size: 13.5px;">Номер телефона скопирован <span>✅</span></div>
+                </div>
+                <div class="vertical-line"></div>
+                <div class="car-details">
+                    <div class="car-title">Kia Rio 4</div>
+                    <div class="car-image">
+                        <img src="Img/Kia_4_2.png" alt="Kia Rio 4" data-large="Img/Kia-Rio 2017.png">
+                    </div>
+                </div>
+            </div>
+            <div class="driver" style="margin-top: 13px;">
+                <div class="photo">
+                    <img src="driver2.jpg" alt="Водитель 2">
+                </div>
+                <div class="info">
+                    <div class="name">Негаматулин Тимур Салихянович</div>
+                    <div class="age">Возраст: <span class="age_">35 лет</span></div>
+                    <div class="rating">Рейтинг: ★★★★☆</div>
+                    <div class="car-info">
+                        <span>Машина: Toyota Camry 40</span>
+                    </div>
+                    <div class="car-info">
+                        <span>Стаж: 17 лет</span>
+                    </div>
+                </div>
+                <div class="whatsapp-container">
+                    <div class="whatsapp-icon" onclick="window.open('https://wa.me/77772794570', '_blank')">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+                    </div>
+                    <div class="phone-number" onclick="handlePhoneClick('+77772794570', this)">+7 777 279-45-70</div>
+                    <div class="copy-notification" id="copy-notification" style="width: 205px; font-size: 13.5px;">Номер телефона скопирован <span>✅</span></div>
+                </div>
+                <div class="whatsapp-container-mobile">
+                    <div class="whatsapp-icon" onclick="window.open('https://wa.me/77772794570', '_blank')">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+                    </div>
+                    <div class="phone-number-mobile" onclick="handlePhoneClick('+77772794570', this)">+7 777 279-45-70</div>
+                <div class="copy-notification" id="copy-notification" style="width: 205px; font-size: 13.5px;">Номер телефона скопирован <span>✅</span></div>
+                </div>
+                <div class="vertical-line"></div>
+                <div class="car-details">
+                    <div class="car-title">Toyota Camry 40</div>
+                    <div class="car-image">
+                        <img src="Img/Camry_2_.png" alt="Camry" data-large="Img/Camry 40 2011.png">
+                    </div>
+                </div>
+            </div>
+            <div class="driver" style="margin-top: 13px;">
+                <div class="photo">
+                    <img src="driver2.jpg" alt="Водитель 2">
+                </div>
+                <div class="info">
+                    <div class="name">Баулин Дмитрий Николаевич</div>
+                    <div class="age">Возраст: <span class="age_">34 года</span></div>
+                    <div class="rating">Рейтинг: ★★★★☆</div>
+                    <div class="car-info">
+                        <span>Машина: Ford Mondeo 3</span>
+                    </div>
+                    <div class="car-info">
+                        <span>Стаж: 17 лет</span>
+                    </div>
+                </div>
+                <div class="whatsapp-container">
+                    <div class="whatsapp-icon" onclick="window.open('https://wa.me/77778951070', '_blank')">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+                    </div>
+                    <div class="phone-number" onclick="handlePhoneClick('+77778951070', this)">+7 777 895-10-70</div>
+                <div class="copy-notification" id="copy-notification" style="width: 205px; font-size: 13.5px;">Номер телефона скопирован <span>✅</span></div>
+                </div>
+                <div class="whatsapp-container-mobile">
+                    <div class="whatsapp-icon" onclick="window.open('https://wa.me/77778951070', '_blank')">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+                    </div>
+                    <div class="phone-number-mobile" onclick="handlePhoneClick('+77778951070', this)">+7 777 895-10-70</div>
+                <div class="copy-notification" id="copy-notification" style="width: 205px; font-size: 13.5px;">Номер телефона скопирован <span>✅</span></div>
+                </div>
+                <div class="vertical-line"></div>
+                <div class="car-details">
+                    <div class="car-title">Ford Mondeo 3</div>
+                    <div class="car-image">
+                        <img src="Img/Ford_2 (2).png" alt="Ford" data-large="Img/Ford 2007.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-text">
+            <button id="toggleButton" class="toggle-button">
+                Информация о безопасности 
+                <span id="arrow" class="arrow">➦</span>
+            </button>
+            <div id="infoBox-" class="info-box-">
+                <p class="welcome-text">
+                    Добро пожаловать на страницу, посвящённую вопросам безопасности и комфорта ваших поездок! 
+                    Мы понимаем, что безопасность наших пассажиров — это наша главная приоритетная задача. Каждый водитель нашей компании прошёл строгий отбор и обучение, что гарантирует высокий уровень обслуживания и внимательное отношение к каждому клиенту.
+                </p>
+        
+                <h3 class="section-title">Профессионализм наших водителей</h3>
+                <p>
+                    Все водители компании имеют богатый опыт в вождении. Мы тщательно отбираем наших сотрудников, обращая внимание не только на их навыки вождения, но и на умение общаться с пассажирами. 
+                </p>
+        
+                <h3 class="section-title">Технологичные автомобили</h3>
+                <p>
+                    Наш автопарк состоит только из современных и хорошо обслуживаемых автомобилей, которые регулярно проходят техосмотр и техническое обслуживание. Мы сотрудничаем только с проверенными автосервисами, чтобы гарантировать надежность каждой машины. 
+                </p>
+                <ul class="features-list">
+                    <li>
+                        <strong>Системы навигации:</strong> Это позволяет нам следить за маршрутами, оптимизируя поездки, и тем самым уменьшая время в пути для наших пассажиров.
+                    </li>
+                    <li>
+                        <strong>GPS-трекеры:</strong> Мы используем технологии GPS для отслеживания местоположения наших автомобилей в реальном времени, что гарантирует безопасность и возможность быстрого реагирования в любых ситуациях.
+                    </li>
+                    <li>
+                        <strong>Камеры видеонаблюдения:</strong> В некоторых автомобилях установлены камеры, которые помогают контролировать ситуацию в салоне и на дороге, обеспечивая дополнительную безопасность во время поездки.
+                    </li>
+                </ul>
+        
+                <h3 class="section-title">Ответственность за безопасность</h3>
+                <p>
+                    Наши водители настроены на то, чтобы каждая поездка проходила максимально безопасно. Они следят за состоянием автомобиля до и после каждой поездки, обращая внимание на такие моменты, как:
+                </p>
+                <ul class="features-list">
+                    <li>
+                        <strong>Технические показатели:</strong> Водители проверяют уровень масла, давление в шинах, работу тормозов и других важных систем перед каждой поездкой.
+                    </li>
+                    <li>
+                        <strong>Чистота и комфорт:</strong> Мы уверены, что чистота автомобиля напрямую влияет на ощущение безопасности пассажиров. Водители заботятся, чтобы салон был опрятным и комфортным.
+                    </li>
+                    <li>
+                        <strong>Остановка и соблюдение правил дорожного движения:</strong> Все наши водители строго соблюдают правила дорожного движения, избегают агрессивного вождения и всегда готовы принять необходимые меры предосторожности.
+                    </li>
+                </ul>
+        
+                <h3 class="section-title">Отзывы и обратная связь</h3>
+                <p>
+                    Мы всегда открыты для общения и готовы выслушать мнения наших пассажиров. Каждый отзыв важен для нас, и мы используем их для дальнейшего улучшения наших услуг. Если у вас возникли вопросы или пожелания, вы можете оставить свой отзыв в анкетах, размещённых в каждом автомобиле, или на нашем сайте.
+                </p>
+        
+                <p class="thank-you">
+                    В нашей компании мы искренне заботимся о безопасности и комфорте наших пассажиров. Мы считаем, что качество обслуживания напрямую зависит от профессионализма наших водителей и состояния нашего автопарка. Поэтому мы инвестируем в комфорт, поддержку и обновление наших автомобилей. 
+                </p>
+                
+                <p class="thank-you">
+                    Спасибо за выбор "Перевозки/15" — вашей надежной компании для перевозки.
+                </p>
+            </div>
+        </div> 
+        <div class="photo-gallery">
+            <div class="gallery-container">
+                <div class="left-photo">
+                    <img id="leftImg" src="Img/Services_1.jpg" alt="Фотография 1" class="dark-img" onclick="changePhoto('left')">
+                    <button class="nav-button left-button" onclick="changePhoto('left')">
+                        <i class='bx bx-log-out-circle'></i>
+                    </button>
+                </div>
+                <div class="center-photo" style="cursor: default;">
+                    <img id="centerImg" src="Img/Services_2.jpg" alt="Фотография 2">
+                </div>
+                <div class="right-photo">
+                    <img id="rightImg" src="Img/slide_2.jpg" alt="Фотография 3" class="dark-img" onclick="changePhoto('right')">
+                    <button class="nav-button right-button" onclick="changePhoto('right')">
+                        <i class='bx bx-log-in-circle'></i>
+                    </button>
+                </div>
+            </div>
+        </div>       
+        <div class="photo-gallery-vertical">
+            <div class="vertical-gallery-container">
+                <button class="nav-button up-button" onclick="changePhotoVertical('up')">
+                    <i class='bx bx-chevron-up-circle'></i>
+                </button>
+                <div class="vertical-photo">
+                    <img id="verticalCenterImg" src="Img/Services_2.jpg" alt="Фотография 2">
+                </div>
+                <button class="nav-button down-button" onclick="changePhotoVertical('down')">
+                    <i class='bx bx-chevron-down-circle'></i>
+                </button>
+            </div>
+        </div>                        
+    </main>
+    <footer class="footer" id="footer">
+        <div class="footer-logo">
+            <div class="logo-">
+                <img class="logos" src="Img/Logotips.png" alt="Логотип" />
+                <h2 class="log">Перевозки 15</h2>
+                </div>
+                <p  class="pols">Наша политика конфиденциальности описывает, как мы собираем, используем и храним ваши персональные данные. Мы стремимся обеспечить безопасность ваших данных и не передаем их третьим лицам без вашего согласия. Пожалуйста, ознакомьтесь с нашей <a href="privacy-policy.html" class="privacy-link">политикой конфиденциальности</a> для получения более подробной информации. Спасибо, что выбираете нас для ваших поездок!</p>
+            <p class="prav" style="margin-top: -15px;">&copy; 2023-2024 "<i>Перевозки/15</i>". Все права защищены</p>
+        </div>
+        <div class="footer-links">
+            <a href="Home.html">Главная</a>
+            <a href="Route_RK.html">Маршруты</a>
+            <a href="">Анкета</a>
+            <a href="Contacts.html">Контакты</a>
+        </div>
+        <div class="footer-contact">
+            <p><strong>Адрес:</strong></p>
+            <p>г. Петропавловск, Казахстан</p>
+            <p>Ул. Букетова 20, д. 15</p>
+            <p style="margin-top: 25px;"><strong>Телефон и WhatsApp:</strong></p>
+            <p><span style="font-size: 20px;">✆ </span><span class="phone" data-phone="+7(705)990-50-57">+7 (705) 990-50-57</span></p>
+            <p class="whatsapp" data-whatsapp="77059905057">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="whatsapp-icon-footer">
+                +7 705 990-50-57
+            </p>
+            <p class="copy-message" style="display:none; color: #28a745;">Номер скопирован</p>
+            <p style="margin-top: 25px;"><strong>Электронная почта:</strong></p>
+            <p><span>✉ </span><span class="email" data-email="danilsw012@gmail.com" style="cursor:pointer;">danilsw012@gmail.com</span></p>
+        </div>
+    </footer>
+    <div class="mobile-navbar" id="mobile-navbar">
+        <div class="mobile-nav-item" data-target="Questionnaire.html">
+            <i class='bx bxs-user-detail'></i>
+        </div>
+        <div class="mobile-nav-item" data-target="Route_RK.html">
+            <i class='bx bx-trip'></i>
+        </div>
+        <div class="mobile-nav-item large" data-target="Home.html">
+            <i class='bx bxs-home'></i>
+        </div>
+        <div class="mobile-nav-item" id="route-rk-btn">
+            <i class='bx bxs-directions'></i>
+        </div>
+        <div class="mobile-nav-item" data-target="Contacts.html">
+            <i class='bx bxs-contact'></i>
+        </div>
+        <div class="extra-buttons" id="extra-buttons">
+            <div class="extra-button" id="route-rk" data-target="RK_.html">
+                <h3 style="font-size: 27px;">РК</h3>
+            </div>
+            <div class="extra-button" id="route-rkf" data-target="RF_.html">
+                <h3 style="font-size: 27px;">РФ</h3>
+            </div>
+        </div>
+    </div>
+    <script src="Java-Script/Questionnaire.js"></script>                     
+</body>
+</html>

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="kz">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Карта для поездок</title>
+    <link rel="icon" href="Img/Logotips.png" type="image/x-icon">
+    <link rel="stylesheet" href="CSS/Route.css" id="main-stylesheet"></head>
+<body>
+    <header>
+        <div class="logo-">
+            <img class="logos" src="Img/Logotips.png" alt="Логотип" />
+            <h2 class="log">Перевозки 15</h2>
+            </div>
+        <div id="date-container">
+            <div id="day-of-week"></div>
+            <div id="date"></div>
+            <div id="year"></div>
+        </div>
+        <div class="contact-button" id="contactButton">
+            <i class='bx bxs-phone-call icon'></i>
+            <span class="phone-number">+7 (705) 990-50-57</span>
+        </div>
+        <a href="https://www.instagram.com/uvezu_privezu?igsh=cjdlcmVxN2R0NjE%3D" target="_blank" class="instagram-link">
+            <div class="contact-button instagram-button">
+                <i class='bx bxl-instagram instagram-icon'></i>
+            </div>
+        </a>
+        <div class="line"></div>
+        <nav class="navbar">
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="Home.html">Главная</a></li>
+                <li class="nav-item"><a href="">Маршруты</a></li>
+                <li class="nav-item"><a href="Questionnaire.html">Анкета</a></li>
+                <li class="nav-item"><a href="Contacts.html">Контакты</a></li>
+            </ul>
+        </nav>
+        <div id="tooltip" style="display:none; position:absolute; background-color:white; border:1px solid #ccc; padding:3px; z-index:1000; font-size: 14px;"></div>
+    </header>
+    <main>
+        <div class="name_driver" style="margin-bottom: -15px;">
+            <div class="sillka" style="font-size: 14px; margin-top: 20px; margin-left: 120px;">
+                <a href="Home.html" class="__" style="color: #333; text-decoration: none;">Главная</a>
+                <span>/</span>
+                <span style="color: #a9a9a9; margin-left: 8px;">Маршруты</span>
+            </div>
+        </div>                             
+        <div class="RK">
+            <div class="RK_trans">
+                <a href="RK_.html"><button class="RK_but">Маршруты поездок в Казахстане</button></a>
+                <a href="RF_.html"><button class="RF_but">Маршруты поездок в России</button></a>
+            </div>
+        </div>
+        <div class="distance-calc">
+            <h1 class="hhh">Расчет расстояний</h1>
+            <hr>
+            <div class="input-group">
+                <label>Откуда:</label>
+                <div class="dropdown" id="fromDropdown">
+                    <div class="dropdown-input" id="fromInput">Выберите город</div>
+                    <div class="arrow-down" id="fromArrow"></div>
+                    <div class="dropdown-list" id="fromList">
+                        <!-- Город будет добавлен через JS -->
+                    </div>
+                </div>
+            </div>
+    
+            <div class="input-group">
+                <label>Докуда:</label>
+                <div class="dropdown" id="toDropdown">
+                    <div class="dropdown-input" id="toInput">Выберите город</div>
+                    <div class="arrow-down" id="toArrow"></div>
+                    <div class="dropdown-list" id="toList">
+                        <!-- Город будет добавлен через JS -->
+                    </div>
+                </div>
+            </div>
+    
+            <hr>
+            <div class="result-container">
+                <div id="result"></div>
+                <button id="calculateBtn" class="buts">Рассчитать</button>
+            </div>
+        </div> 
+        
+        <div class="price-calc">
+        <h1 class="hhh">Расчет цены</h1>
+            <hr>
+            <div class="input-group">
+                <label>Откуда:</label>
+                <div class="dropdown" id="fromDropdown2">
+                    <div class="dropdown-input" id="fromInput2">Выберите город</div>
+                    <div class="arrow-down" id="fromArrow2"></div>
+                    <div class="dropdown-list" id="fromList2">
+                        <!-- Город будет добавлен через JS -->
+                    </div>
+                </div>
+            </div>
+    
+            <div class="input-group">
+                <label>Докуда:</label>
+                <div class="dropdown" id="toDropdown2">
+                    <div class="dropdown-input" id="toInput2">Выберите город</div>
+                    <div class="arrow-down" id="toArrow2"></div>
+                    <div class="dropdown-list" id="toList2">
+                        <!-- Город будет добавлен через JS -->
+                    </div>
+                </div>
+            </div>
+    
+            <hr>
+            <div class="result-container-price">
+                <div id="result-price"></div>
+                <button id="calculateBtn-price" class="buts">Рассчитать</button>
+            </div>
+        </div>
+
+        <div class="times-calc">
+            <h1 class="hhh">Расчет времени</h1>
+                <hr>
+                <div class="input-group">
+                    <label>Откуда:</label>
+                    <div class="dropdown" id="fromDropdown3">
+                        <div class="dropdown-input" id="fromInput3">Выберите город</div>
+                        <div class="arrow-down" id="fromArrow3"></div>
+                        <div class="dropdown-list" id="fromList3">
+                            <!-- Город будет добавлен через JS -->
+                        </div>
+                    </div>
+                </div>
+
+        <div class="input-group">
+            <label>Докуда:</label>
+            <div class="dropdown" id="toDropdown3">
+                <div class="dropdown-input" id="toInput3">Выберите город</div>
+                <div class="arrow-down" id="toArrow3"></div>
+                <div class="dropdown-list" id="toList3">
+                    <!-- Город будет добавлен через JS -->
+                </div>
+            </div>
+        </div>
+
+        <hr>
+        <div class="results-cont-times">
+            <div id="times-results">Время в пути: <span id="time-result">0</span> ч.</div>
+            <button id="timesBtn" class="buts">Рассчитать</button>
+        </div>
+    </div>
+
+        <div class="info">
+            <div id="pointA" style="margin-bottom: 5px; margin-left: 7px;">Маршрут <span style="color: blue; font-weight: 800; font-size: 20px; margin-right: 13px;">Ⓐ</span><span id="pointA-text" class="input-field">Откуда<span style="margin-left: 8px;" class="spaa">(Поставьте точку A на карте)</span></span> <span id="removeA" class="remove-point" style="display:none;">✖</span></div>
+            <div id="pointB" style="margin-top: 5px; margin-left: 7px;">Маршрут <span style="color: red; font-weight: 800; font-size: 20px; margin-right: 8px;">Ⓑ</span> <span id="pointB-text" class="input-field">Куда<span style="margin-left: 25px;" class="spaa">(Поставьте точку B на карте)</span></span> <span id="removeB" class="remove-point" style="display:none;">✖</span></div>     
+            <div id="reverse-route" style="display: none; margin-top: 10px;">
+                <span>Обратный маршрут </span>
+                <div id="reverse-checkbox" style="display: inline-block; width: 20px; height: 20px; border: 1px solid black; text-align: center; line-height: 20px; cursor: pointer;"></div>
+            </div> 
+            <div class="result">
+                <div style="margin-top: 8px;">Километраж: <span id="distance">0</span> км</div>
+                <div style="margin-top: 5px;">Цена за 1 км: <span id="price-per-km">120</span> <span id="currency-price">Тенге</span></div>
+                <div id="clarification" style="display: none; margin-top: 10px; margin-bottom: 5px;">
+                    <span style="color: red; font-weight: 600;">УТОЧНЕНИЕ! </span>
+                    <span style="color: black;">Переезд через границу в Россию будет стоимостью <strong>6000 Тенге</strong> или <strong>1100 Рублей.</strong></span>
+                </div>
+                <hr>
+                <div style="margin-top: 15px;">Общая сумма: <span id="total">0</span> <span id="currency-total">Тенге</span></div>
+            </div>  
+                <button id="currency-toggle" style="margin-top: 10px;" class="currency-button"><span style="font-size: 20px; text-align: center;">¤ </span>Валюта</button>
+                <div id="currency-list_" class="currency-list_">
+                    <div class="currency-option" data-value="tenge">₸ Тенге</div>
+                    <div class="currency-option" data-value="rub">₽ Рубли</div>
+                </div>
+        </div>       
+    
+        <div id="map"></div>
+        
+        <div style="position: absolute; bottom: -103px; left: 770px;">
+            <div style="position: absolute; bottom: 20px; right: 20px; z-index: 1000; display: flex; align-items: center;">
+                <button id="searchButton" class="search-button">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                </button>
+                <div style="position: relative;">
+                    <input id="searchInput" type="text" placeholder="Введите название Города" />
+                    <button id="clearButton">✖</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="controls">
+            <button id="helpButton" style="background: none; border: none; cursor: pointer; font-size: 30px;">
+            </button>
+            <div id="helpPopup" style="display: none;">
+                <span style="cursor: pointer; float: right; color: red; font-size: 25px; margin-right: 5px; margin-top: 5px;" id="closePopup">
+                    <i class='bx bx-x-circle'></i>
+                </span>
+                <h4 style="margin: 0; text-align: center; margin-top: 20px; font-size: 18px;">Быстрые клавиши</h4>
+                <ul style="list-style: none; padding: 0; margin-left: 15px; font-size: 17px;">
+                    <li class="key"><span class="key-label">←</span> Переместить влево</li>
+                    <li class="key"><span class="key-label">→</span> Переместить вправо</li>
+                    <li class="key"><span class="key-label">↑</span> Переместить вверх</li>
+                    <li class="key"><span class="key-label">↓</span> Переместить вниз</li>
+                    <li class="key"><span class="key-label">+</span> Приблизить</li>
+                    <li class="key"><span class="key-label">-</span> Уменьшить</li>
+                </ul>
+            </div>
+        </div>                                          
+        
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+        <script src="https://unpkg.com/leaflet-geocoder-mapzen/dist/leaflet-geocoder-mapzen.js"></script>
+        <script src="https://unpkg.com/@turf/turf@6/turf.min.js"></script>           
+    </main>           
+    <footer class="footer" id="footer">
+        <div class="footer-logo">
+            <div class="logo-">
+                <img class="logos" src="Img/Logotips.png" alt="Логотип" />
+                <h2 class="log">Перевозки 15</h2>
+                </div>
+            <p class="pols">Наша политика конфиденциальности описывает, как мы собираем, используем и храним ваши персональные данные. Мы стремимся обеспечить безопасность ваших данных и не передаем их третьим лицам без вашего согласия. Пожалуйста, ознакомьтесь с нашей <a href="privacy-policy.html" class="privacy-link">политикой конфиденциальности</a> для получения более подробной информации. Спасибо, что выбираете нас для ваших поездок!</p>
+            <p class="prav" style="margin-top: -15px;">&copy; 2023-2024 "<i>Перевозки/15</i>". Все права защищены</p>
+        </div>
+        <div class="footer-links">
+            <a href="Home.html">Главная</a>
+            <a href="">Маршруты</a>
+            <a href="Questionnaire.html">Анкета</a>
+            <a href="Contacts.html">Контакты</a>
+        </div>
+        <div class="footer-contact">
+            <p><strong>Адрес:</strong></p>
+            <p>г. Петропавловск, Казахстан</p>
+            <p>Ул. Букетова 20, д. 15</p>
+            <p style="margin-top: 25px;"><strong>Телефон и WhatsApp:</strong></p>
+            <p><span style="font-size: 20px;">✆ </span><span class="phone" data-phone="+7(705)990-50-57">+7 (705) 990-50-57</span></p>
+            <p class="whatsapp" data-whatsapp="77059905057">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="whatsapp-icon-footer">
+                +7 705 990-50-57
+            </p>
+            <p class="copy-message" style="display:none; color: #28a745;">Номер скопирован</p>
+            <p style="margin-top: 25px;"><strong>Электронная почта:</strong></p>
+            <p><span>✉ </span><span class="email" data-email="danilsw012@gmail.com" style="cursor:pointer;">danilsw012@gmail.com</span></p>
+        </div>
+    </footer> 
+    <div class="mobile-navbar" id="mobile-navbar">
+        <div class="mobile-nav-item" data-target="Questionnaire.html">
+            <i class='bx bxs-user-detail'></i>
+        </div>
+        <div class="mobile-nav-item" data-target="Route_RK.html">
+            <i class='bx bx-trip'></i>
+        </div>
+        <div class="mobile-nav-item large" data-target="Home.html">
+            <i class='bx bxs-home'></i>
+        </div>
+        <div class="mobile-nav-item" id="route-rk-btn">
+            <i class='bx bxs-directions'></i>
+        </div>
+        <div class="mobile-nav-item" data-target="Contacts.html">
+            <i class='bx bxs-contact'></i>
+        </div>
+        <div class="extra-buttons" id="extra-buttons">
+            <div class="extra-button" id="route-rk" data-target="RK_.html">
+                <h3 style="font-size: 27px;">РК</h3>
+            </div>
+            <div class="extra-button" id="route-rkf" data-target="RF_.html">
+                <h3 style="font-size: 27px;">РФ</h3>
+            </div>
+        </div>
+    </div>
+    <script src="Java-Script/Route.js"></script>                     
+</body>
+</html>

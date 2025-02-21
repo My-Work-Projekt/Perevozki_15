@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="kz">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Поездки Казахстан</title>
+    <link rel="icon" href="Img/Logotips.png" type="image/x-icon">
+    <link rel="stylesheet" href="CSS/RK_.css" id="main-stylesheet"></head>
+<body>
+    <header>
+        <div class="logo-">
+            <img class="logos" src="Img/Logotips.png" alt="Логотип" />
+            <h2 class="log">Перевозки 15</h2>
+            </div>
+        <div id="date-container">
+            <div id="day-of-week"></div>
+            <div id="date"></div>
+            <div id="year"></div>
+        </div>
+        <div class="contact-button" id="contactButton">
+            <i class='bx bxs-phone-call icon'></i>
+            <span class="phone-number">+7 (705) 990-50-57</span>
+        </div>
+        <a href="https://www.instagram.com/uvezu_privezu?igsh=cjdlcmVxN2R0NjE%3D" target="_blank" class="instagram-link">
+            <div class="contact-button instagram-button">
+                <i class='bx bxl-instagram instagram-icon'></i>
+            </div>
+        </a>
+        <div class="line"></div>
+        <nav class="navbar">
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="Home.html">Главная</a></li>
+                <li class="nav-item"><a href="Route_RK.html">Маршруты</a></li>
+                <li class="nav-item"><a href="Questionnaire.html">Анкета</a></li>
+                <li class="nav-item"><a href="Contacts.html">Контакты</a></li>
+            </ul>
+        </nav>
+        <div id="tooltip" style="display:none; position:absolute; background-color:white; border:1px solid #ccc; padding:3px; z-index:1000; font-size: 14px;"></div>
+    </header>
+    <main>
+        <div class="name_driver" style="margin-top: 150px;"></div>
+            <div class="sillka" style="font-size: 15px; margin-top: 25px; margin-left: 110px; margin-bottom: -20px;">
+                <a href="Home.html" class="__">Главная</a><span>/</span><span><a href="Route_RK.html" class="__" style="color: darksalmon; margin-left: 8px;">Маршруты</a></span><span>/</span><span style="color: darksalmon; margin-left: 8px;">Маршруты РК</span>
+            </div>
+            <div class="RK">
+                <div class="RK_trans">
+                    <button class="RK_but active" disabled>Маршруты поездок в Казахстане</button>
+                    <a href="RF_.html"><button class="RF_but">Маршруты поездок в России</button></a>
+                </div>
+            </div>                                                                        
+        <div class="distance-calc">
+            <h1 class="hhh">Расчет расстояний</h1>
+            <hr>
+            <div class="input-group">
+                <label>Откуда:</label>
+                <div class="dropdown" id="fromDropdown">
+                    <div class="dropdown-input" id="fromInput">Выберите город</div>
+                    <div class="arrow-down" id="fromArrow"></div>
+                    <div class="dropdown-list" id="fromList">
+                        <!-- Город будет добавлен через JS -->
+                    </div>
+                </div>
+            </div>
+    
+            <div class="input-group">
+                <label>Докуда:</label>
+                <div class="dropdown" id="toDropdown">
+                    <div class="dropdown-input" id="toInput">Выберите город</div>
+                    <div class="arrow-down" id="toArrow"></div>
+                    <div class="dropdown-list" id="toList">
+                        <!-- Город будет добавлен через JS -->
+                    </div>
+                </div>
+            </div>
+    
+            <hr>
+            <div class="result-container">
+                <div id="result"></div>
+                <button id="calculateBtn" class="buts">Рассчитать</button>
+            </div>
+        </div> 
+        
+        <div class="price-calc">
+        <h1 class="hhh">Расчет цены</h1>
+            <hr>
+            <div class="input-group">
+                <label>Откуда:</label>
+                <div class="dropdown" id="fromDropdown2">
+                    <div class="dropdown-input" id="fromInput2">Выберите город</div>
+                    <div class="arrow-down" id="fromArrow2"></div>
+                    <div class="dropdown-list" id="fromList2">
+                        <!-- Город будет добавлен через JS -->
+                    </div>
+                </div>
+            </div>
+    
+            <div class="input-group">
+                <label>Докуда:</label>
+                <div class="dropdown" id="toDropdown2">
+                    <div class="dropdown-input" id="toInput2">Выберите город</div>
+                    <div class="arrow-down" id="toArrow2"></div>
+                    <div class="dropdown-list" id="toList2">
+                        <!-- Город будет добавлен через JS -->
+                    </div>
+                </div>
+            </div>
+    
+            <hr>
+            <div class="result-container-price">
+                <div id="result-price"></div>
+                <button id="calculateBtn-price" class="buts">Рассчитать</button>
+            </div>
+        </div>
+
+        <div class="times-calc">
+            <h1 class="hhh">Расчет времени</h1>
+                <hr>
+                <div class="input-group">
+                    <label>Откуда:</label>
+                    <div class="dropdown" id="fromDropdown3">
+                        <div class="dropdown-input" id="fromInput3">Выберите город</div>
+                        <div class="arrow-down" id="fromArrow3"></div>
+                        <div class="dropdown-list" id="fromList3">
+                            <!-- Город будет добавлен через JS -->
+                        </div>
+                    </div>
+                </div>
+
+        <div class="input-group">
+            <label>Докуда:</label>
+            <div class="dropdown" id="toDropdown3">
+                <div class="dropdown-input" id="toInput3">Выберите город</div>
+                <div class="arrow-down" id="toArrow3"></div>
+                <div class="dropdown-list" id="toList3">
+                    <!-- Город будет добавлен через JS -->
+                </div>
+            </div>
+        </div>
+
+        <hr>
+        <div class="results-cont-times">
+            <div id="times-results">Время в пути: <span id="time-result">0</span> ч.</div>
+            <button id="timesBtn" class="buts">Рассчитать</button>
+        </div>
+    </div>
+    <div class="routes-container">
+        <h3 style="opacity: 0;">Маршруты</h3>
+        <h4 style="opacity: 0;">Актуальные поездки</h4>
+        <div class="route" data-driver="1">
+            <span class="route-time">16 Часов</span>
+            <div class="route-info">
+                <span class="route-cities" data-original-text="Астана (KZ) — Алматы (KZ)">Астана (KZ) — Алматы (KZ)</span>
+                <span class="route-distance">973 км</span>
+            </div>
+            <div class="route-driver-price">
+                <span class="route-driver"></span>
+                <span class="route-price">116732 Тг.</span>
+            </div>
+        </div>
+        <div class="separator"></div>
+        <div class="route" data-driver="2">
+            <span class="route-time">33 Часа</span>
+            <div class="route-info">
+                <span class="route-cities" data-original-text="Москва (RU) — Санкт-Петербург (RU)">Петропавловск (KZ) — Москва (RU)</span>
+                <span class="route-distance">1 982 км</span>
+            </div>
+            <div class="route-driver-price">
+                <span class="route-driver"></span>
+                <span class="route-price" style="margin-right: 38px;">237784 Тг.</span>
+            </div>
+        </div>
+        <div class="separator"></div>
+        <div class="route" data-driver="3">
+            <span class="route-time">1 час</span>
+            <div class="route-info">
+                <span class="route-cities" data-original-text="Алматы (KZ) — Бишкек (KG)">Алматы (KZ) — Бишкек (KG)</span>
+                <span class="route-distance">240 км</span>
+            </div>
+            <div class="route-driver-price">
+                <span class="route-driver"></span>
+                <span class="route-price">4000 Тг</span>
+            </div>
+        </div>
+        <div class="separator"></div>
+        <div class="route" data-driver="4">
+            <span class="route-time">3 часа</span>
+            <div class="route-info">
+                <span class="route-cities" data-original-text="Астана (KZ) — Алматы (KZ)">Астана (KZ) — Алматы (KZ)</span>
+                <span class="route-distance">973 км</span>
+            </div>
+            <div class="route-driver-price">
+                <span class="route-driver"></span>
+                <span class="route-price">5000 Тг</span>
+            </div>
+        </div>
+        <div class="separator"></div>
+        <div class="route" data-driver="5">
+            <span class="route-time">5 часов</span>
+            <div class="route-info">
+                <span class="route-cities" data-original-text="Москва (RU) — Санкт-Петербург (RU)">Петропавловск (KZ) — Москва (RU)</span>
+                <span class="route-distance">1 982 км</span>
+            </div>
+            <div class="route-driver-price">
+                <span class="route-driver"></span>
+                <span class="route-price" style="margin-right: 38px;">7000 Тг</span>
+            </div>
+        </div>
+        <div class="separator" style="margin-bottom: 20px;"></div>
+        <h4 style="opacity: 0;">Другие поездки</h4>
+        <div class="route" data-driver="6">
+            <span class="route-time">1 час</span>
+            <div class="route-info">
+                <span class="route-cities" data-original-text="Алматы (KZ) — Бишкек (KG)">Алматы (KZ) — Бишкек (KG)</span>
+                <span class="route-distance">240 км</span>
+            </div>
+            <div class="route-driver-price">
+                <span class="route-driver"></span>
+                <span class="route-price">4000 Тг</span>
+            </div>
+        </div>
+        <div class="separator"></div>
+        <div class="route" data-driver="7">
+            <span class="route-time">3 часа</span>
+            <div class="route-info">
+                <span class="route-cities" data-original-text="Астана (KZ) — Алматы (KZ)">Астана (KZ) — Алматы (KZ)</span>
+                <span class="route-distance">973 км</span>
+            </div>
+            <div class="route-driver-price">
+                <span class="route-driver"></span>
+                <span class="route-price">5000 Тг</span>
+            </div>
+        </div>
+        <div class="separator"></div>
+        <div class="route" data-driver="8">
+            <span class="route-time">5 часов</span>
+            <div class="route-info">
+                <span class="route-cities" data-original-text="Москва (RU) — Санкт-Петербург (RU)">Петропавловск (KZ) — Москва (RU)</span>
+                <span class="route-distance">1 982 км</span>
+            </div>
+            <div class="route-driver-price">
+                <span class="route-driver"></span>
+                <span class="route-price" style="margin-right: 38px;">7000 Тг</span>
+            </div>
+        </div>
+        <div class="separator"></div>
+        <div class="route" data-driver="9">
+            <span class="route-time">1 час</span>
+            <div class="route-info">
+                <span class="route-cities" data-original-text="Алматы (KZ) — Бишкек (KG)">Алматы (KZ) — Бишкек (KG)</span>
+                <span class="route-distance">240 км</span>
+            </div>
+            <div class="route-driver-price">
+                <span class="route-driver"></span>
+                <span class="route-price">4000 Тг</span>
+            </div>
+        </div>
+        <div class="separator"></div>
+        <div class="route" data-driver="10">
+            <span class="route-time">3 часа</span>
+            <div class="route-info">
+                <span class="route-cities" data-original-text="Астана (KZ) — Алматы (KZ)">Астана (KZ) — Алматы (KZ)</span>
+                <span class="route-distance">973 км</span>
+            </div>
+            <div class="route-driver-price">
+                <span class="route-driver"></span>
+                <span class="route-price">5000 Тг</span>
+            </div>
+        </div>
+        <div class="separator"></div>
+        <div class="route" data-driver="11">
+            <span class="route-time">5 часов</span>
+            <div class="route-info">
+                <span class="route-cities" data-original-text="Москва (RU) — Санкт-Петербург (RU)">Петропавловск (KZ) — Москва (RU)</span>
+                <span class="route-distance">1 982 км</span>
+            </div>
+            <div class="route-driver-price">
+                <span class="route-driver"></span>
+                <span class="route-price" style="margin-right: 38px;">7000 Тг</span>
+            </div>
+        </div>
+        <div class="separator"></div>
+        <div class="route" data-driver="12">
+            <span class="route-time">1 час</span>
+            <div class="route-info">
+                <span class="route-cities" data-original-text="Алматы (KZ) — Бишкек (KG)">Алматы (KZ) — Бишкек (KG)</span>
+                <span class="route-distance">240 км</span>
+            </div>
+            <div class="route-driver-price">
+                <span class="route-driver"></span>
+                <span class="route-price">4000 Тг</span>
+            </div>
+        </div>
+        <div class="separator"></div>
+        <div class="route" data-driver="13">
+            <span class="route-time">3 часа</span>
+            <div class="route-info">
+                <span class="route-cities" data-original-text="Астана (KZ) — Алматы (KZ)">Астана (KZ) — Алматы (KZ)</span>
+                <span class="route-distance">973 км</span>
+            </div>
+            <div class="route-driver-price">
+                <span class="route-driver"></span>
+                <span class="route-price">5000 Тг</span>
+            </div>
+        </div>
+        <div class="separator"></div>
+        <div class="route" data-driver="14">
+            <span class="route-time">5 часов</span>
+            <div class="route-info">
+                <span class="route-cities" data-original-text="Москва (RU) — Санкт-Петербург (RU)">Петропавловск (KZ) — Москва (RU)</span>
+                <span class="route-distance">1 982 км</span>
+            </div>
+            <div class="route-driver-price">
+                <span class="route-driver"></span>
+                <span class="route-price" style="margin-right: 38px;">7000 Тг</span>
+            </div>
+        </div>
+        <div class="separator"></div>
+        <div class="route" data-driver="15">
+            <span class="route-time">1 час</span>
+            <div class="route-info">
+                <span class="route-cities" data-original-text="Алматы (KZ) — Бишкек (KG)">Алматы (KZ) — Бишкек (KG)</span>
+                <span class="route-distance">240 км</span>
+            </div>
+            <div class="route-driver-price">
+                <span class="route-driver"></span>
+                <span class="route-price">4000 Тг</span>
+            </div>
+        </div>
+        <div class="separator"></div>
+        <div class="route" data-driver="16">
+            <span class="route-time">3 часа</span>
+            <div class="route-info">
+                <span class="route-cities" data-original-text="Астана (KZ) — Алматы (KZ)">Астана (KZ) — Алматы (KZ)</span>
+                <span class="route-distance">973 км</span>
+            </div>
+            <div class="route-driver-price">
+                <span class="route-driver"></span>
+                <span class="route-price">5000 Тг</span>
+            </div>
+        </div>
+        <div class="separator"></div>
+        <div class="route" data-driver=17">
+            <span class="route-time">5 часов</span>
+            <div class="route-info">
+                <span class="route-cities" data-original-text="Москва (RU) — Санкт-Петербург (RU)">Петропавловск (KZ) — Москва (RU)</span>
+                <span class="route-distance">1 982 км</span>
+            </div>
+            <div class="route-driver-price">
+                <span class="route-driver"></span>
+                <span class="route-price" style="margin-right: 38px;">7000 Тг</span>
+            </div>
+        </div>
+        <div class="separator"></div>
+        <div class="route" data-driver="18">
+            <span class="route-time">1 час</span>
+            <div class="route-info">
+                <span class="route-cities" data-original-text="Алматы (KZ) — Бишкек (KG)">Алматы (KZ) — Бишкек (KG)</span>
+                <span class="route-distance">240 км</span>
+            </div>
+            <div class="route-driver-price">
+                <span class="route-driver"></span>
+                <span class="route-price">4000 Тг</span>
+            </div>
+        </div>
+        <div class="separator"></div>
+        <div class="route" data-driver="19">
+            <span class="route-time">3 часа</span>
+            <div class="route-info">
+                <span class="route-cities" data-original-text="Астана (KZ) — Алматы (KZ)">Астана (KZ) — Алматы (KZ)</span>
+                <span class="route-distance">973 км</span>
+            </div>
+            <div class="route-driver-price">
+                <span class="route-driver"></span>
+                <span class="route-price">5000 Тг</span>
+            </div>
+        </div>
+        <div class="separator"></div>
+        <div class="route" data-driver="20">
+            <span class="route-time">5 часов</span>
+            <div class="route-info">
+                <span class="route-cities" data-original-text="Москва (RU) — Санкт-Петербург (RU)">Петропавловск (KZ) — Москва (RU)</span>
+                <span class="route-distance">1 982 км</span>
+            </div>
+            <div class="route-driver-price">
+                <span class="route-driver"></span>
+                <span class="route-price" style="margin-right: 38px;">7000 Тг</span>
+            </div>
+        </div>
+        <div class="separator"></div>
+        <div class="route" data-driver="21">
+            <span class="route-time">1 час</span>
+            <div class="route-info">
+                <span class="route-cities" data-original-text="Алматы (KZ) — Бишкек (KG)">Алматы (KZ) — Бишкек (KG)</span>
+                <span class="route-distance">240 км</span>
+            </div>
+            <div class="route-driver-price">
+                <span class="route-driver"></span>
+                <span class="route-price">4000 Тг</span>
+            </div>
+        </div>
+            </div>
+        </div>
+    </main>
+    <div id="map"></div>
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+        <script src="https://unpkg.com/leaflet-geocoder-mapzen/dist/leaflet-geocoder-mapzen.js"></script>
+        <script src="https://unpkg.com/@turf/turf@6/turf.min.js"></script>      
+        <footer class="footer" id="footer">
+            <div class="footer-logo">
+                <div class="logo-">
+                    <img class="logos" src="Img/Logotips.png" alt="Логотип" />
+                    <h2 class="log">Перевозки 15</h2>
+                    </div>
+                <p class="pols">Наша политика конфиденциальности описывает, как мы собираем, используем и храним ваши персональные данные. Мы стремимся обеспечить безопасность ваших данных и не передаем их третьим лицам без вашего согласия. Пожалуйста, ознакомьтесь с нашей <a href="privacy-policy.html" class="privacy-link">политикой конфиденциальности</a> для получения более подробной информации. Спасибо, что выбираете нас для ваших поездок!</p>
+                <p class="prav" style="margin-top: -15px;">&copy; 2023-2024 "<i>Перевозки/15</i>". Все права защищены</p>
+            </div>
+            <div class="footer-links">
+                <a href="Home.html">Главная</a>
+                <a href="Route_RK.html">Маршруты</a>
+                <a href="Questionnaire.html">Анкета</a>
+                <a href="Contacts.html">Контакты</a>
+            </div>
+            <div class="footer-contact">
+                <p><strong>Адрес:</strong></p>
+                <p>г. Петропавловск, Казахстан</p>
+                <p>Ул. Букетова 20, д. 15</p>
+                <p style="margin-top: 25px;"><strong>Телефон и WhatsApp:</strong></p>
+                <p><span style="font-size: 20px;">✆ </span><span class="phone" data-phone="+7(705)990-50-57">+7 (705) 990-50-57</span></p>
+                <p class="whatsapp" data-whatsapp="77059905057">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="whatsapp-icon-footer">
+                    +7 705 990-50-57
+                </p>
+                <p class="copy-message" style="display:none; color: #28a745;">Номер скопирован</p>
+                <p style="margin-top: 25px;"><strong>Электронная почта:</strong></p>
+                <p><span>✉ </span><span class="email" data-email="danilsw012@gmail.com" style="cursor:pointer;">danilsw012@gmail.com</span></p>
+            </div>
+        </footer>     
+        <div class="mobile-navbar" id="mobile-navbar">
+            <div class="mobile-nav-item" data-target="Questionnaire.html">
+                <i class='bx bxs-user-detail'></i>
+            </div>
+            <div class="mobile-nav-item" data-target="Route_RK.html">
+                <i class='bx bx-trip'></i>
+            </div>
+            <div class="mobile-nav-item large" data-target="Home.html">
+                <i class='bx bxs-home'></i>
+            </div>
+            <div class="mobile-nav-item" id="route-rk-btn">
+                <i class='bx bxs-directions'></i>
+            </div>
+            <div class="mobile-nav-item" data-target="Contacts.html">
+                <i class='bx bxs-contact'></i>
+            </div>
+            <div class="extra-buttons" id="extra-buttons">
+                <div class="extra-button" id="route-rk" data-target="RK_.html">
+                    <h3 style="font-size: 27px;">РК</h3>
+                </div>
+                <div class="extra-button" id="route-rkf" data-target="RF_.html">
+                    <h3 style="font-size: 27px;">РФ</h3>
+                </div>
+            </div>
+        </div>                              
+        <script src="Java-Script/RK_.js"></script>                     
+    </body>
+</html>

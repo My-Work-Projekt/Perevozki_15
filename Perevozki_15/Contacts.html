@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="kz">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты</title>
+    <link rel="icon" href="Img/Logotips.png" type="image/x-icon">
+    <link rel="stylesheet" href="CSS/Contacts.css" id="main-stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logo-">
+            <img class="logos" src="Img/Logotips.png" alt="Логотип" />
+            <h2 class="log">Перевозки 15</h2>
+            </div>
+        <div id="date-container">
+            <div id="day-of-week"></div>
+            <div id="date"></div>
+            <div id="year"></div>
+        </div>
+        <div class="contact-button" id="contactButton">
+            <i class='bx bxs-phone-call icon'></i>
+            <span class="phone-number">+7 (705) 990-50-57</span>
+        </div>
+        <a href="https://www.instagram.com/uvezu_privezu?igsh=cjdlcmVxN2R0NjE%3D" target="_blank" class="instagram-link">
+            <div class="contact-button instagram-button">
+                <i class='bx bxl-instagram instagram-icon'></i>
+            </div>
+        </a>
+        <div class="line"></div>
+        <nav class="navbar">
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="Home.html">Главная</a></li>
+                <li class="nav-item"><a href="Route_RK.html">Маршруты</a></li>
+                <li class="nav-item"><a href="Questionnaire.html">Анкета</a></li>
+                <li class="nav-item"><a href="">Контакты</a></li>
+            </ul>
+        </nav>
+        <div id="tooltip" style="display:none; position:absolute; background-color:white; border:1px solid #ccc; padding:3px; z-index:1000; font-size: 14px;"></div>
+    </header>
+    <main>
+        <div class="container-cont" style="margin-top: 140px;">
+            <div class="text-section">
+                <h1>Связаться с нами</h1>
+                <p>
+                    Если у вас есть любые вопросы или отзывы, не стесняйтесь обращаться к нам. Мы готовы вас выслушать и помочь с любыми проблемами. 
+                    Наша команда работает 24/7. Постараемся ответить на ваши вопросы как можно скорее. 
+                    Ваше мнение очень важно для нас, и мы ценим ваше время.
+                </p>
+                <h2>Общие вопросы</h2>
+                <p>Почта: <a href="mailto:danilsw012@gmail.com" class="email-link">danilsw012@gmail.com</a></p>
+                <div class="whatsapp-cont">
+                    <div class="whatsapp-icon" onclick="window.open('https://wa.me/77059905057', '_blank')">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+                    </div>
+                    <a href="https://wa.me/77059905057" target="_blank" class="whatsapp-link">
+                        <span class="whatsapp-number">+7 (705) 990-50-57</span>
+                    </a>
+                </div>
+                <div class="socials-cont">
+                    <p class="soc">Наши соцсети:</p>
+                    <a href="https://www.instagram.com/uvezu_privezu?igsh=cjdlcmVxN2R0NjE%3D" target="_blank" class="instagram-link">
+                        <i class='bx bxl-instagram instagram-icon'></i>
+                    </a>
+                </div>
+            </div>
+            <div class="image-section">
+                <img src="Img/Kia-Rio 2017.png" alt="Beautiful Image" class="beautiful-image">
+            </div>
+        </div>        
+        <div class="contact-form-container" style="margin-bottom: 30px;">
+            <div class="form-and-text">
+                <div class="form-container">
+                    <h2>Контактная форма</h2>
+                    <form class="contact-form" action="process.php" method="post">
+                        <label for="name"></label>
+                        <input type="text" id="name" placeholder="Имя" maxlength="20">
+                        
+                        <label for="email"></label>
+                        <input type="email" id="email" placeholder="Адрес электронной почты">
+                        
+                        <label for="message"></label>
+                        <textarea id="message" placeholder="Ваше сообщение" rows="5" style="resize: none; margin-bottom: 10px;" maxlength="1000"></textarea>
+                        <div id="char-count" style="font-size: 14px; position: relative; background-color: rgba(255, 255, 255, 0.8); padding: 1px; border-radius: 3px;">
+                            0/1000
+                        </div>
+                        
+                        <button type="submit">Отправить</button>
+                        <div id="error-message" style="color: red; display: none; margin-top: 13px;">
+                            <ul id="error-list"></ul>
+                        </div>
+                        <div id="success-message" style="color: red; text-align: center; display: none;">
+                            Форма отправлена. Ответим в ближайшее время!
+                        </div>
+                    </form>
+                </div>
+                <div class="help-text">
+                    <p>У вас есть вопрос или предложение? Мы всегда готовы помочь! Наша команда стремится обеспечить максимальное удобство для вас, и поэтому мы открыты для любых обсуждений. Пожалуйста, заполните форму сбоку, и мы ответим на ваше сообщение в кратчайшие сроки. <span class="tex">Не стесняйтесь задавать вопросы, делиться своими идеями с нами. Ваши мысли важны для нас, и мы рады учесть их в нашей работе.</span></p>
+                    <p>Если у вас есть особые пожелания или вам нужна консультация по конкретному вопросу, обязательно дайте нам знать! Ждем вашего сообщения с нетерпением!</p>
+                </div>
+            </div>
+        </div>                 
+        <footer class="footer" id="footer">
+            <div class="footer-logo">
+                <div class="logo-">
+                    <img class="logos" src="Img/Logotips.png" alt="Логотип" />
+                    <h2 class="log">Перевозки 15</h2>
+                    </div>
+                <p class="pols">Наша политика конфиденциальности описывает, как мы собираем, используем и храним ваши персональные данные. Мы стремимся обеспечить безопасность ваших данных и не передаем их третьим лицам без вашего согласия. Пожалуйста, ознакомьтесь с нашей <a href="privacy-policy.html" class="privacy-link">политикой конфиденциальности</a> для получения более подробной информации. Спасибо, что выбираете нас для ваших поездок!</p>
+                <p class="prav" style="margin-top: -15px;">&copy; 2023-2024 "<i>Перевозки/15</i>". Все права защищены</p>
+            </div>
+            <div class="footer-links">
+                <a href="Home.html">Главная</a>
+                <a href="Route_RK.html">Маршруты</a>
+                <a href="Questionnaire.html">Анкета</a>
+                <a href="">Контакты</a>
+            </div>
+            <div class="footer-contact">
+                <p><strong>Адрес:</strong></p>
+                <p>г. Петропавловск, Казахстан</p>
+                <p>Ул. Букетова 20, д. 15</p>
+                <p style="margin-top: 25px;"><strong>Телефон и WhatsApp:</strong></p>
+                <p><span style="font-size: 20px;">✆ </span><span class="phone" data-phone="+7(705)990-50-57">+7 (705) 990-50-57</span></p>
+                <p class="whatsapp" data-whatsapp="77059905057">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="whatsapp-icon-footer">
+                    +7 705 990-50-57
+                </p>
+                <p class="copy-message" style="display:none; color: #28a745;">Номер скопирован</p>
+                <p style="margin-top: 25px;"><strong>Электронная почта:</strong></p>
+                <p><span>✉ </span><span class="email" data-email="danilsw012@gmail.com" style="cursor:pointer;">danilsw012@gmail.com</span></p>
+            </div>
+        </footer>      
+        <div class="mobile-navbar" id="mobile-navbar">
+            <div class="mobile-nav-item" data-target="Questionnaire.html">
+                <i class='bx bxs-user-detail'></i>
+            </div>
+            <div class="mobile-nav-item" data-target="Route_RK.html">
+                <i class='bx bx-trip'></i>
+            </div>
+            <div class="mobile-nav-item large" data-target="Home.html">
+                <i class='bx bxs-home'></i>
+            </div>
+            <div class="mobile-nav-item" id="route-rk-btn">
+                <i class='bx bxs-directions'></i>
+            </div>
+            <div class="mobile-nav-item" data-target="Contacts.html">
+                <i class='bx bxs-contact'></i>
+            </div>
+            <div class="extra-buttons" id="extra-buttons">
+                <div class="extra-button" id="route-rk" data-target="RK_.html">
+                    <h3 style="font-size: 27px;">РК</h3>
+                </div>
+                <div class="extra-button" id="route-rkf" data-target="RF_.html">
+                    <h3 style="font-size: 27px;">РФ</h3>
+                </div>
+            </div>
+        </div>          
+        <script src="Java-Script/Contacts.js"></script>                     
+    </main>           
+</body>
+</html>

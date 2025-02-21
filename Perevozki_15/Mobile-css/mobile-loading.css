@@ -1,0 +1,167 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f0f0;
+}
+
+.loader-container {
+    text-align: center;
+}
+
+.loader {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin-bottom: 65px;
+    margin-left: 37%;
+}
+
+.outer-circle {
+    width: 130%;
+    height: 130%;
+    border: 6px solid #ccc;
+    border-radius: 50%;
+    border-top: 7.5px solid #aaa;
+    animation: spin 1s linear infinite;
+}
+
+.inner-circle {
+    width: 110%;
+    height: 110%;
+    border: 4px solid #888;
+    border-radius: 50%;
+    border-top: 5px solid #666;
+    position: absolute;
+    top: 12.5%;
+    left: 12.5%;
+    animation: spin-inner 1.5s linear infinite;
+}
+
+.logo {
+    width: 100px;
+    position: absolute;
+    top: 23%;
+    left: 21%;
+}
+
+.loading-text {
+    font-size: 20px;
+    color: #fff;
+    background-color: #4CAF50;
+    padding: 15px 25px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes spin-inner {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+
+/*Адаптивность под 480px*/
+
+@media screen and (max-width: 480px) {
+    body, html {
+        height: 100%;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #f0f0f0;
+    }
+    
+    .loader-container {
+        text-align: center;
+    }
+    
+    .loader {
+        position: relative;
+        width: 100px;
+        height: 100px;
+        margin-bottom: 35px;
+        margin-left: 36%;
+    }
+    
+    .outer-circle {
+        width: 97%;
+        height: 97%;
+        border: 6px solid #ccc;
+        border-radius: 50%;
+        border-top: 7.5px solid #aaa;
+        animation: spin 1s linear infinite;
+    }
+    
+    .inner-circle {
+        width: 82%;
+        height: 82%;
+        border: 4px solid #888;
+        border-radius: 50%;
+        border-top: 5px solid #666;
+        position: absolute;
+        top: 10%;
+        left: 9%;
+        animation: spin-inner 1.5s linear infinite;
+    }
+    
+    .logo {
+        width: 75px;
+        position: absolute;
+        top: 18.5%;
+        left: 16%;
+    }
+    
+    .loading-text {
+        font-size: 17px;
+        color: #fff;
+        background-color: #4CAF50;
+        padding: 10px 20px;
+        border-radius: 10px;
+        text-align: center;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        animation: fadeIn 0.8s ease-in-out;
+    }
+    
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+    
+    @keyframes spin-inner {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+}
